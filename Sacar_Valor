@@ -1,0 +1,45 @@
+package paraTreinamento2026_2;
+
+import java.util.Scanner;
+
+class SaldoIn extends Exception{
+	public SaldoIn(String mensagem) {
+		super(mensagem);
+	}
+}
+class Conta{
+	private double saldo = 100;
+	public void sacar(double valor) throws SaldoIn{
+			
+			if(saldo < valor) {
+					throw new SaldoIn("Saldo Insuficiente");
+		}
+	saldo -= valor;
+	}
+	public void impV() {
+		System.out.println(saldo);
+	}
+}
+
+public class paraT_45 {
+
+	public static void main(String[] args)  {
+		// TODO Auto-generated method stub
+		Scanner entrada = new Scanner(System.in);
+		Conta c = new Conta();
+		try {
+			System.out.println("digite o valor que deseja sacar: ");
+			int valor = entrada.nextInt();
+			c.sacar(valor);
+			System.out.println("valor de saldo: " );
+			c.impV();
+		} catch (SaldoIn e) {
+			System.out.println("nao e possivel fazer o deposito por falta de saldo");
+		
+
+	} finally {
+		System.out.println("programa terminado");
+	}
+	}
+	
+}
